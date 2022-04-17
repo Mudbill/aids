@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @layer base {
+  .fragment {
+    @apply absolute;
+  }
+} */
+
+@font-face {
+  font-family: "Book Antiqua";
+  src: url(./resources/fonts/book-antiqua.ttf);
+}
+
+@font-face {
+  font-family: "Bookman Old Style";
+  src: url(./resources/fonts/bookman-old-style.ttf);
+}
+
+@font-face {
+  font-family: "Stonehenge";
+  src: url(./resources/fonts/stonehenge.ttf);
+}
