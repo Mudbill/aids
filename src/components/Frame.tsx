@@ -81,7 +81,7 @@ export default function GenericFrame(props: PropsWithChildren<Props>) {
   const y = props.y - topLeftSize.height;
 
   return (
-    <>
+    <div>
       <CornerTopLeft
         src={images.cornerTL}
         x={x}
@@ -150,6 +150,6 @@ export default function GenericFrame(props: PropsWithChildren<Props>) {
         x={props.x + props.width}
         y={props.y + props.height}
       />
-    </>
+    </div>
   );
 }

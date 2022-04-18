@@ -3,6 +3,7 @@ import { GenericIcon } from "./fragments/icons";
 import health from "../resources/textures/inventory_health_100.png";
 import GenericFrame from "./Frame";
 import { useEditorContext } from "../contexts/EditorContext";
+import { useImageContext } from "../contexts/ImageContext";
 
 interface Props {
   center: { x: number; y: number };
@@ -13,13 +14,8 @@ interface Props {
 }
 
 export default function HealthFrame(props: Props) {
-  const { imageStream, activePart } = useEditorContext();
+  const { imageHealthIcon } = useImageContext();
 
-  useEffect(() => {
-    if (activePart === "Health") setIcon(imageStream);
-  }, [imageStream]);
-
-  const [icon, setIcon] = useState(health);
   const [iconSize, setIconSize] = useState({ x: 0, y: 0 });
 
   const iconPos = useMemo(() => {
@@ -43,7 +39,7 @@ export default function HealthFrame(props: Props) {
   return (
     <>
       <GenericIcon
-        src={icon}
+        src={imageHealthIcon}
         alt="Health"
         x={iconPos.x}
         y={iconPos.y}

@@ -1,8 +1,11 @@
 import {
   createContext,
   PropsWithChildren,
+  useCallback,
   useContext,
+  useEffect,
   useReducer,
+  useState,
 } from "react";
 
 import imageBorderGenericTop from "../resources/textures/inventory_frame_generic_border_u.png";
@@ -43,7 +46,7 @@ import imageOilFgIcon from "../resources/textures/inventory_oil_fg.png";
 import imageOilLiquid from "../resources/textures/inventory_oil_liquid.png";
 import imageJournalIcon from "../resources/textures/inventory_journal.png";
 
-type ImageState = {
+export type ImageState = {
   imageBorderGenericTop: string;
   imageBorderGenericLeft: string;
   imageBorderGenericRight: string;
@@ -84,7 +87,7 @@ type ImageState = {
 };
 
 type ImageContextType = ImageState & {
-  dispatch: React.Dispatch<Partial<ImageState>>;
+  setImage: (type: keyof ImageState, image: File) => void;
 };
 
 function reducer(state: ImageState, newState: Partial<ImageState>) {
@@ -136,10 +139,35 @@ export function ImageContextProvider({ children }: PropsWithChildren<{}>) {
     imageOilLiquid,
     imageJournalIcon,
   });
+  const [selectedImage, setSelectedImage] = useState<keyof ImageState>();
+  const [imageFile, setImageFile] = useState<File>();
+  const [imageStream, setImageStream] = useState("");
 
-  const value = {
+  useEffect(() => {
+    if (!imageFile) return setImageStream("");
+
+    const objectUrl = URL.createObjectURL(imageFile);
+    setImageStream(objectUrl);
+    return () => {
+      URL.revokeObjectURL(objectUrl);
+    };
+  }, [imageFile]);
+
+  useEffect(() => {
+    if (!selectedImage) return;
+    dispatch({
+      [selectedImage]: imageStream,
+    });
+  }, [imageStream, selectedImage]);
+
+  const setImage = useCallback((type: keyof ImageState, image: File) => {
+    setImageFile(image);
+    setSelectedImage(type);
+  }, []);
+
+  const value: ImageContextType = {
     ...state,
-    dispatch,
+    setImage,
   };
 
   return <ImageContext.Provider value={value} children={children} />;

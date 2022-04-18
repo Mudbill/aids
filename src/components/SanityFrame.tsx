@@ -1,8 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { GenericIcon } from "./fragments/icons";
-import sanity from "../resources/textures/inventory_sanity_100.png";
 import GenericFrame from "./Frame";
-import { useEditorContext } from "../contexts/EditorContext";
+import { useImageContext } from "../contexts/ImageContext";
 
 interface Props {
   center: { x: number; y: number };
@@ -13,13 +12,8 @@ interface Props {
 }
 
 export default function SanityFrame(props: Props) {
-  const { imageStream, activePart } = useEditorContext();
+  const { imageSanityIcon } = useImageContext();
 
-  useEffect(() => {
-    if (activePart === "Sanity") setIcon(imageStream);
-  }, [imageStream]);
-
-  const [icon, setIcon] = useState(sanity);
   const [iconSize, setIconSize] = useState({ x: 0, y: 0 });
 
   const iconPos = useMemo(() => {
@@ -43,7 +37,7 @@ export default function SanityFrame(props: Props) {
   return (
     <>
       <GenericIcon
-        src={icon}
+        src={imageSanityIcon}
         alt="Sanity"
         x={iconPos.x}
         y={iconPos.y}

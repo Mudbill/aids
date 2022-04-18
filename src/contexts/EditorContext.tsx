@@ -2,54 +2,70 @@ import {
   createContext,
   PropsWithChildren,
   useContext,
-  useEffect,
-  useState,
+  useReducer,
 } from "react";
 
-type ActiveSection = "Tinderboxes" | "Health" | "Sanity" | "Oil" | "Journal";
+const EditorContext = createContext<EditorContextState>(null!);
 
-type EditorContextType = {
-  x: number;
-  y: number;
-  setPos: (x: number, y: number) => void;
-  activePart?: ActiveSection;
-  setActivePart: (part: ActiveSection) => void;
-  imageStream: string;
-  setImage: (file: File) => void;
+type EditorContextState = {
+  health: {
+    center: {
+      x: number;
+      y: number;
+    };
+    frameSize: {
+      width: number;
+      height: number;
+    };
+    frameHPadding: {
+      left: number;
+      right: number;
+    };
+    frameVPadding: {
+      top: number;
+      bottom: number;
+    };
+    frameOffset: {
+      x: number;
+      y: number;
+    };
+  };
 };
 
-const EditorContext = createContext<EditorContextType>(null!);
+function reducer(
+  state: EditorContextState,
+  newState: Partial<EditorContextState>
+) {
+  return state;
+}
 
 export function EditorProvider({ children }: PropsWithChildren<{}>) {
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
-  const [activePart, setActivePart] = useState<ActiveSection>();
-  const [imageFile, setImageFile] = useState<File>();
-  const [imageStream, setImageStream] = useState("");
-
-  useEffect(() => {
-    if (!imageFile) return setImageStream("");
-
-    const objectUrl = URL.createObjectURL(imageFile);
-    setImageStream(objectUrl);
-    return () => {
-      URL.revokeObjectURL(objectUrl);
-    };
-  }, [imageFile]);
-
-  const value: EditorContextType = {
-    x,
-    y,
-    setPos: (x, y) => {
-      setX(x);
-      setY(y);
+  const [state, dispatch] = useReducer(reducer, {
+    health: {
+      center: {
+        x: 1,
+        y: 1,
+      },
+      frameSize: {
+        width: 110,
+        height: -1,
+      },
+      frameHPadding: {
+        left: 0,
+        right: 0,
+      },
+      frameVPadding: {
+        top: 0,
+        bottom: 0,
+      },
+      frameOffset: {
+        x: 18,
+        y: 0,
+      },
     },
-    imageStream,
-    setImage: setImageFile,
-    activePart,
-    setActivePart,
-  };
-  return <EditorContext.Provider value={value} children={children} />;
+  });
+
+  return <EditorContext.Provider value={state} children={children} />;
 }
 
 export function useEditorContext() {

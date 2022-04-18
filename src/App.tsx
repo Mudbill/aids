@@ -12,8 +12,8 @@ import { ImageContextProvider } from "./contexts/ImageContext";
 
 export default function App() {
   return (
-    <EditorProvider>
-      <ImageContextProvider>
+    <ImageContextProvider>
+      <EditorProvider>
         <Preview>
           <HealthFrame
             center={{ x: 75, y: 168 }}
@@ -71,8 +71,8 @@ export default function App() {
             offset={{ x: 0, y: 0 }}
           />
         </Preview>
-      </ImageContextProvider>
-      <EditView />
-    </EditorProvider>
+        <EditView />
+      </EditorProvider>
+    </ImageContextProvider>
   );
 }

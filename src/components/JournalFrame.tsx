@@ -1,8 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { GenericIcon } from "./fragments/icons";
-import journal from "../resources/textures/inventory_journal.png";
 import GenericFrame from "./Frame";
-import { useEditorContext } from "../contexts/EditorContext";
+import { useImageContext } from "../contexts/ImageContext";
 
 interface Props {
   center: { x: number; y: number };
@@ -19,13 +18,8 @@ export default function JournalFrame({
   vPadding,
   hPadding,
 }: Props) {
-  const { imageStream, activePart } = useEditorContext();
+  const { imageJournalIcon } = useImageContext();
 
-  useEffect(() => {
-    if (activePart === "Journal") setIcon(imageStream);
-  }, [imageStream]);
-
-  const [icon, setIcon] = useState(journal);
   const [iconSize, setIconSize] = useState({ x: 0, y: 0 });
 
   const iconPos = useMemo(() => {
@@ -38,7 +32,7 @@ export default function JournalFrame({
   return (
     <>
       <GenericIcon
-        src={icon}
+        src={imageJournalIcon}
         alt="Journal"
         x={iconPos.x}
         y={iconPos.y}

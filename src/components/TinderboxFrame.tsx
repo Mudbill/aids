@@ -1,8 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { GenericIcon } from "./fragments/icons";
-import tinderbox from "../resources/textures/inventory_tinderboxes.png";
 import GenericFrame from "./Frame";
-import { useEditorContext } from "../contexts/EditorContext";
+import { useImageContext } from "../contexts/ImageContext";
 
 interface Props {
   center: { x: number; y: number };
@@ -19,13 +18,8 @@ export default function TinderboxFrame({
   vPadding,
   hPadding,
 }: Props) {
-  const { imageStream, activePart } = useEditorContext();
+  const { imageTinderboxIcon } = useImageContext();
 
-  useEffect(() => {
-    if (activePart === "Tinderboxes") setIcon(imageStream);
-  }, [imageStream]);
-
-  const [icon, setIcon] = useState(tinderbox);
   const [iconSize, setIconSize] = useState({ x: 0, y: 0 });
 
   const iconPos = useMemo(() => {
@@ -38,7 +32,7 @@ export default function TinderboxFrame({
   return (
     <>
       <GenericIcon
-        src={icon}
+        src={imageTinderboxIcon}
         alt="Tinderboxes"
         x={iconPos.x}
         y={iconPos.y}
