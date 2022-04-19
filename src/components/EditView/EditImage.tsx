@@ -18,7 +18,7 @@ export default function EditImage(props: Props) {
   );
 
   return (
-    <>
+    <div>
       <select
         value={selectedPart}
         onChange={(e) => setSelectedPart(e.target.value as keyof ImageState)}
@@ -30,6 +30,6 @@ export default function EditImage(props: Props) {
         ))}
       </select>{" "}
       <input type="file" onChange={handleChangeFile} />
-    </>
+    </div>
   );
 }

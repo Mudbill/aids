@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @layer base {
-  .fragment {
-    @apply absolute;
+@layer base {
+  .inventory * {
+    @apply select-none;
   }
-} */
+}
 
 @font-face {
   font-family: "Book Antiqua";

@@ -5,17 +5,29 @@ import {
   useReducer,
 } from "react";
 
-const EditorContext = createContext<EditorContextState>(null!);
+type EditorContextType = EditorContextState & {
+  dispatch: React.Dispatch<Partial<EditorContextState>>;
+};
+
+const EditorContext = createContext<EditorContextType>(null!);
 
 type EditorContextState = {
+  active?:
+    | "health"
+    | "sanity"
+    | "tinderbox"
+    | "oil"
+    | "journal"
+    | "slots"
+    | "textbox";
   health: {
     center: {
       x: number;
       y: number;
     };
     frameSize: {
-      width: number;
-      height: number;
+      x: number;
+      y: number;
     };
     frameHPadding: {
       left: number;
@@ -36,19 +48,19 @@ function reducer(
   state: EditorContextState,
   newState: Partial<EditorContextState>
 ) {
-  return state;
+  return { ...state, ...newState };
 }
 
 export function EditorProvider({ children }: PropsWithChildren<{}>) {
   const [state, dispatch] = useReducer(reducer, {
     health: {
       center: {
-        x: 1,
-        y: 1,
+        x: 75,
+        y: 168,
       },
       frameSize: {
-        width: 110,
-        height: -1,
+        x: 110,
+        y: -1,
       },
       frameHPadding: {
         left: 0,
@@ -65,7 +77,9 @@ export function EditorProvider({ children }: PropsWithChildren<{}>) {
     },
   });
 
-  return <EditorContext.Provider value={state} children={children} />;
+  const value = { ...state, dispatch };
+
+  return <EditorContext.Provider value={value} children={children} />;
 }
 
 export function useEditorContext() {

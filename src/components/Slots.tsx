@@ -1,4 +1,5 @@
-import Frame from "./Frame";
+import { useEditorContext } from "../contexts/EditorContext";
+import Frame from "./core/Frame";
 import Slot from "./Slot";
 
 interface Props {
@@ -20,6 +21,8 @@ export default function Slots(props: Props) {
 
   const x = props.x + props.frameOffset.x;
   const y = props.y + props.frameOffset.y;
+
+  const { active, dispatch } = useEditorContext();
 
   const frameSize = {
     width:
@@ -76,7 +79,9 @@ export default function Slots(props: Props) {
         y={y}
         width={props.frameSize.x === -1 ? frameSize.width : props.frameSize.x}
         height={props.frameSize.y === -1 ? frameSize.height : props.frameSize.y}
-      ></Frame>
+        wireframe={active === "slots"}
+        onClick={() => dispatch({ active: "slots" })}
+      />
     </>
   );
 }
