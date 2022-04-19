@@ -8,83 +8,71 @@ import {
   useState,
 } from "react";
 
-import imageBorderGenericTop from "../resources/textures/inventory_frame_generic_border_u.png";
-import imageBorderGenericLeft from "../resources/textures/inventory_frame_generic_border_l.png";
-import imageBorderGenericRight from "../resources/textures/inventory_frame_generic_border_r.png";
-import imageBorderGenericBottom from "../resources/textures/inventory_frame_generic_border_d.png";
+const defaultImages = {
+  imageBorderGenericTop:
+    "/resources/textures/inventory_frame_generic_border_u.png",
+  imageBorderGenericLeft:
+    "/resources/textures/inventory_frame_generic_border_l.png",
+  imageBorderGenericRight:
+    "/resources/textures/inventory_frame_generic_border_r.png",
+  imageBorderGenericBottom:
+    "/resources/textures/inventory_frame_generic_border_d.png",
 
-import imageCornerGenericTopLeft from "../resources/textures/inventory_frame_generic_corner_lu.png";
-import imageCornerGenericTopRight from "../resources/textures/inventory_frame_generic_corner_ru.png";
-import imageCornerGenericBottomLeft from "../resources/textures/inventory_frame_generic_corner_ld.png";
-import imageCornerGenericBottomRight from "../resources/textures/inventory_frame_generic_corner_rd.png";
+  imageCornerGenericTopLeft:
+    "/resources/textures/inventory_frame_generic_corner_lu.png",
+  imageCornerGenericTopRight:
+    "/resources/textures/inventory_frame_generic_corner_ru.png",
+  imageCornerGenericBottomLeft:
+    "/resources/textures/inventory_frame_generic_corner_ld.png",
+  imageCornerGenericBottomRight:
+    "/resources/textures/inventory_frame_generic_corner_rd.png",
 
-import imageBorderHealthTop from "../resources/textures/inventory_frame_health_border_u.png";
-import imageBorderHealthLeft from "../resources/textures/inventory_frame_health_border_l.png";
-import imageBorderHealthRight from "../resources/textures/inventory_frame_health_border_r.png";
-import imageBorderHealthBottom from "../resources/textures/inventory_frame_health_border_d.png";
+  imageBorderHealthTop:
+    "/resources/textures/inventory_frame_health_border_u.png",
+  imageBorderHealthLeft:
+    "/resources/textures/inventory_frame_health_border_l.png",
+  imageBorderHealthRight:
+    "/resources/textures/inventory_frame_health_border_r.png",
+  imageBorderHealthBottom:
+    "/resources/textures/inventory_frame_health_border_d.png",
 
-import imageCornerHealthTopLeft from "../resources/textures/inventory_frame_health_corner_lu.png";
-import imageCornerHealthTopRight from "../resources/textures/inventory_frame_health_corner_ru.png";
-import imageCornerHealthBottomLeft from "../resources/textures/inventory_frame_health_corner_ld.png";
-import imageCornerHealthBottomRight from "../resources/textures/inventory_frame_health_corner_rd.png";
+  imageCornerHealthTopLeft:
+    "/resources/textures/inventory_frame_health_corner_lu.png",
+  imageCornerHealthTopRight:
+    "/resources/textures/inventory_frame_health_corner_ru.png",
+  imageCornerHealthBottomLeft:
+    "/resources/textures/inventory_frame_health_corner_ld.png",
+  imageCornerHealthBottomRight:
+    "/resources/textures/inventory_frame_health_corner_rd.png",
 
-import imageBorderSanityTop from "../resources/textures/inventory_frame_sanity_border_u.png";
-import imageBorderSanityLeft from "../resources/textures/inventory_frame_sanity_border_l.png";
-import imageBorderSanityRight from "../resources/textures/inventory_frame_sanity_border_r.png";
-import imageBorderSanityBottom from "../resources/textures/inventory_frame_sanity_border_d.png";
+  imageBorderSanityTop:
+    "/resources/textures/inventory_frame_sanity_border_u.png",
+  imageBorderSanityLeft:
+    "/resources/textures/inventory_frame_sanity_border_l.png",
+  imageBorderSanityRight:
+    "/resources/textures/inventory_frame_sanity_border_r.png",
+  imageBorderSanityBottom:
+    "/resources/textures/inventory_frame_sanity_border_d.png",
 
-import imageCornerSanityTopLeft from "../resources/textures/inventory_frame_sanity_corner_lu.png";
-import imageCornerSanityTopRight from "../resources/textures/inventory_frame_sanity_corner_ru.png";
-import imageCornerSanityBottomLeft from "../resources/textures/inventory_frame_sanity_corner_ld.png";
-import imageCornerSanityBottomRight from "../resources/textures/inventory_frame_sanity_corner_rd.png";
+  imageCornerSanityTopLeft:
+    "/resources/textures/inventory_frame_sanity_corner_lu.png",
+  imageCornerSanityTopRight:
+    "/resources/textures/inventory_frame_sanity_corner_ru.png",
+  imageCornerSanityBottomLeft:
+    "/resources/textures/inventory_frame_sanity_corner_ld.png",
+  imageCornerSanityBottomRight:
+    "/resources/textures/inventory_frame_sanity_corner_rd.png",
 
-import imageHealthIcon from "../resources/textures/inventory_health_100.png";
-import imageSanityIcon from "../resources/textures/inventory_sanity_100.png";
-import imageTinderboxIcon from "../resources/textures/inventory_tinderboxes.png";
-import imageOilBgIcon from "../resources/textures/inventory_oil_bg.png";
-import imageOilFgIcon from "../resources/textures/inventory_oil_fg.png";
-import imageOilLiquid from "../resources/textures/inventory_oil_liquid.png";
-import imageJournalIcon from "../resources/textures/inventory_journal.png";
-
-export type ImageState = {
-  imageBorderGenericTop: string;
-  imageBorderGenericLeft: string;
-  imageBorderGenericRight: string;
-  imageBorderGenericBottom: string;
-
-  imageCornerGenericTopLeft: string;
-  imageCornerGenericTopRight: string;
-  imageCornerGenericBottomLeft: string;
-  imageCornerGenericBottomRight: string;
-
-  imageBorderHealthTop: string;
-  imageBorderHealthLeft: string;
-  imageBorderHealthRight: string;
-  imageBorderHealthBottom: string;
-
-  imageCornerHealthTopLeft: string;
-  imageCornerHealthTopRight: string;
-  imageCornerHealthBottomLeft: string;
-  imageCornerHealthBottomRight: string;
-
-  imageBorderSanityTop: string;
-  imageBorderSanityLeft: string;
-  imageBorderSanityRight: string;
-  imageBorderSanityBottom: string;
-
-  imageCornerSanityTopLeft: string;
-  imageCornerSanityTopRight: string;
-  imageCornerSanityBottomLeft: string;
-  imageCornerSanityBottomRight: string;
-
-  imageHealthIcon: string;
-  imageSanityIcon: string;
-  imageTinderboxIcon: string;
-  imageOilBgIcon: string;
-  imageOilFgIcon: string;
-  imageOilLiquid: string;
-  imageJournalIcon: string;
+  imageHealthIcon: "/resources/textures/inventory_health_100.png",
+  imageSanityIcon: "/resources/textures/inventory_sanity_100.png",
+  imageTinderboxIcon: "/resources/textures/inventory_tinderboxes.png",
+  imageOilBgIcon: "/resources/textures/inventory_oil_bg.png",
+  imageOilFgIcon: "/resources/textures/inventory_oil_fg.png",
+  imageOilLiquid: "/resources/textures/inventory_oil_liquid.png",
+  imageJournalIcon: "/resources/textures/inventory_journal.png",
 };
+
+export type ImageState = typeof defaultImages;
 
 type ImageContextType = ImageState & {
   setImage: (type: keyof ImageState, image: File) => void;
@@ -100,45 +88,7 @@ function reducer(state: ImageState, newState: Partial<ImageState>) {
 const ImageContext = createContext<ImageContextType>(null!);
 
 export function ImageContextProvider({ children }: PropsWithChildren<{}>) {
-  const [state, dispatch] = useReducer(reducer, {
-    imageBorderGenericTop,
-    imageBorderGenericLeft,
-    imageBorderGenericRight,
-    imageBorderGenericBottom,
-
-    imageCornerGenericTopLeft,
-    imageCornerGenericTopRight,
-    imageCornerGenericBottomLeft,
-    imageCornerGenericBottomRight,
-
-    imageBorderHealthTop,
-    imageBorderHealthLeft,
-    imageBorderHealthRight,
-    imageBorderHealthBottom,
-
-    imageCornerHealthTopLeft,
-    imageCornerHealthTopRight,
-    imageCornerHealthBottomLeft,
-    imageCornerHealthBottomRight,
-
-    imageBorderSanityTop,
-    imageBorderSanityLeft,
-    imageBorderSanityRight,
-    imageBorderSanityBottom,
-
-    imageCornerSanityTopLeft,
-    imageCornerSanityTopRight,
-    imageCornerSanityBottomLeft,
-    imageCornerSanityBottomRight,
-
-    imageHealthIcon,
-    imageSanityIcon,
-    imageTinderboxIcon,
-    imageOilBgIcon,
-    imageOilFgIcon,
-    imageOilLiquid,
-    imageJournalIcon,
-  });
+  const [state, dispatch] = useReducer(reducer, defaultImages);
   const [selectedImage, setSelectedImage] = useState<keyof ImageState>();
   const [imageFile, setImageFile] = useState<File>();
   const [imageStream, setImageStream] = useState("");

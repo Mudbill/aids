@@ -3,8 +3,7 @@ module.exports = {
   theme: {
     extend: {
       cursor: {
-        custom:
-          "url(./src/resources/textures/gui_amn_mm_pointer_normal.png), auto",
+        custom: "url(/resources/textures/gui_amn_mm_pointer_normal.png), auto",
       },
       fontFamily: {
         "item-header": ["Stonehenge", "serif"],
@@ -12,7 +11,7 @@ module.exports = {
         "game-default": ["'Bookman Old Style'", "sans-serif"],
       },
       backgroundImage: {
-        mono: "url('./src/resources/textures/preview_mono_800x600.png')",
+        mono: "url(/resources/textures/preview_mono_800x600.png)",
       },
     },
   },
