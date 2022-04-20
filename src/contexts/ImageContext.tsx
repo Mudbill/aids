@@ -9,67 +9,60 @@ import {
 } from "react";
 
 const defaultImages = {
-  imageBorderGenericTop:
-    "./resources/textures/inventory_frame_generic_border_u.png",
+  imageBorderGenericTop: "./assets/images/inventory_frame_generic_border_u.png",
   imageBorderGenericLeft:
-    "./resources/textures/inventory_frame_generic_border_l.png",
+    "./assets/images/inventory_frame_generic_border_l.png",
   imageBorderGenericRight:
-    "./resources/textures/inventory_frame_generic_border_r.png",
+    "./assets/images/inventory_frame_generic_border_r.png",
   imageBorderGenericBottom:
-    "./resources/textures/inventory_frame_generic_border_d.png",
+    "./assets/images/inventory_frame_generic_border_d.png",
 
   imageCornerGenericTopLeft:
-    "./resources/textures/inventory_frame_generic_corner_lu.png",
+    "./assets/images/inventory_frame_generic_corner_lu.png",
   imageCornerGenericTopRight:
-    "./resources/textures/inventory_frame_generic_corner_ru.png",
+    "./assets/images/inventory_frame_generic_corner_ru.png",
   imageCornerGenericBottomLeft:
-    "./resources/textures/inventory_frame_generic_corner_ld.png",
+    "./assets/images/inventory_frame_generic_corner_ld.png",
   imageCornerGenericBottomRight:
-    "./resources/textures/inventory_frame_generic_corner_rd.png",
+    "./assets/images/inventory_frame_generic_corner_rd.png",
 
-  imageBorderHealthTop:
-    "./resources/textures/inventory_frame_health_border_u.png",
-  imageBorderHealthLeft:
-    "./resources/textures/inventory_frame_health_border_l.png",
-  imageBorderHealthRight:
-    "./resources/textures/inventory_frame_health_border_r.png",
+  imageBorderHealthTop: "./assets/images/inventory_frame_health_border_u.png",
+  imageBorderHealthLeft: "./assets/images/inventory_frame_health_border_l.png",
+  imageBorderHealthRight: "./assets/images/inventory_frame_health_border_r.png",
   imageBorderHealthBottom:
-    "./resources/textures/inventory_frame_health_border_d.png",
+    "./assets/images/inventory_frame_health_border_d.png",
 
   imageCornerHealthTopLeft:
-    "./resources/textures/inventory_frame_health_corner_lu.png",
+    "./assets/images/inventory_frame_health_corner_lu.png",
   imageCornerHealthTopRight:
-    "./resources/textures/inventory_frame_health_corner_ru.png",
+    "./assets/images/inventory_frame_health_corner_ru.png",
   imageCornerHealthBottomLeft:
-    "./resources/textures/inventory_frame_health_corner_ld.png",
+    "./assets/images/inventory_frame_health_corner_ld.png",
   imageCornerHealthBottomRight:
-    "./resources/textures/inventory_frame_health_corner_rd.png",
+    "./assets/images/inventory_frame_health_corner_rd.png",
 
-  imageBorderSanityTop:
-    "./resources/textures/inventory_frame_sanity_border_u.png",
-  imageBorderSanityLeft:
-    "./resources/textures/inventory_frame_sanity_border_l.png",
-  imageBorderSanityRight:
-    "./resources/textures/inventory_frame_sanity_border_r.png",
+  imageBorderSanityTop: "./assets/images/inventory_frame_sanity_border_u.png",
+  imageBorderSanityLeft: "./assets/images/inventory_frame_sanity_border_l.png",
+  imageBorderSanityRight: "./assets/images/inventory_frame_sanity_border_r.png",
   imageBorderSanityBottom:
-    "./resources/textures/inventory_frame_sanity_border_d.png",
+    "./assets/images/inventory_frame_sanity_border_d.png",
 
   imageCornerSanityTopLeft:
-    "./resources/textures/inventory_frame_sanity_corner_lu.png",
+    "./assets/images/inventory_frame_sanity_corner_lu.png",
   imageCornerSanityTopRight:
-    "./resources/textures/inventory_frame_sanity_corner_ru.png",
+    "./assets/images/inventory_frame_sanity_corner_ru.png",
   imageCornerSanityBottomLeft:
-    "./resources/textures/inventory_frame_sanity_corner_ld.png",
+    "./assets/images/inventory_frame_sanity_corner_ld.png",
   imageCornerSanityBottomRight:
-    "./resources/textures/inventory_frame_sanity_corner_rd.png",
+    "./assets/images/inventory_frame_sanity_corner_rd.png",
 
-  imageHealthIcon: "./resources/textures/inventory_health_100.png",
-  imageSanityIcon: "./resources/textures/inventory_sanity_100.png",
-  imageTinderboxIcon: "./resources/textures/inventory_tinderboxes.png",
-  imageOilBgIcon: "./resources/textures/inventory_oil_bg.png",
-  imageOilFgIcon: "./resources/textures/inventory_oil_fg.png",
-  imageOilLiquid: "./resources/textures/inventory_oil_liquid.png",
-  imageJournalIcon: "./resources/textures/inventory_journal.png",
+  imageHealthIcon: "./assets/images/inventory_health_100.png",
+  imageSanityIcon: "./assets/images/inventory_sanity_100.png",
+  imageTinderboxIcon: "./assets/images/inventory_tinderboxes.png",
+  imageOilBgIcon: "./assets/images/inventory_oil_bg.png",
+  imageOilFgIcon: "./assets/images/inventory_oil_fg.png",
+  imageOilLiquid: "./assets/images/inventory_oil_liquid.png",
+  imageJournalIcon: "./assets/images/inventory_journal.png",
 };
 
 export type ImageState = typeof defaultImages;
