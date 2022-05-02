@@ -8,9 +8,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.5",
+    "@types/lodash.merge": "^4.6.7",
+    "@types/lodash.uniqueid": "^4.0.7",
     "classnames": "^2.3.1",
+    "lodash.merge": "^4.6.2",
+    "lodash.uniqueid": "^4.0.1",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-popper": "^2.2.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

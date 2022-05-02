@@ -5,7 +5,8 @@ import TextBox from "./elements/TextBox";
 import Slots from "./Slots";
 
 export default function Preview() {
-  const { active, dispatch, health } = useEditorContext();
+  const { active, dispatch, health, sanity, tinderbox, oil, journal, textbox } =
+    useEditorContext();
 
   return (
     <div
@@ -26,11 +27,11 @@ export default function Preview() {
         frameOffset={{ x: 0, y: 0 }}
       />
       <Oil
-        center={{ x: 720, y: 293 }}
-        size={{ x: 100, y: 100 }}
-        hPadding={{ left: 0, right: 0 }}
-        vPadding={{ top: 10, bottom: 15 }}
-        offset={{ x: -32, y: -5 }}
+        center={oil.center}
+        size={oil.frameSize}
+        hPadding={oil.frameHPadding}
+        vPadding={oil.frameVPadding}
+        offset={oil.frameOffset}
       />
       <IconAndFrame
         icon="imageHealthIcon"
@@ -46,38 +47,42 @@ export default function Preview() {
       <IconAndFrame
         icon="imageSanityIcon"
         frameStyle="sanity"
-        center={{ x: 75, y: 418 }}
-        size={{ x: 100, y: -1 }}
-        hPadding={{ left: 0, right: 0 }}
-        vPadding={{ top: 0, bottom: 0 }}
-        offset={{ x: 7, y: 0 }}
+        center={sanity.center}
+        size={sanity.frameSize}
+        hPadding={sanity.frameHPadding}
+        vPadding={sanity.frameVPadding}
+        offset={sanity.frameOffset}
         wireframe={active === "sanity"}
         onClick={() => dispatch({ active: "sanity" })}
       />
       <IconAndFrame
         icon="imageTinderboxIcon"
-        center={{ x: 720, y: 127 }}
-        size={{ x: 100, y: 90 }}
-        hPadding={{ left: 0, right: 0 }}
-        vPadding={{ top: 0, bottom: 0 }}
-        offset={{ x: -28, y: -15 }}
+        center={tinderbox.center}
+        size={tinderbox.frameSize}
+        hPadding={tinderbox.frameHPadding}
+        vPadding={tinderbox.frameVPadding}
+        offset={tinderbox.frameOffset}
         wireframe={active === "tinderbox"}
         onClick={() => dispatch({ active: "tinderbox" })}
       />
       <IconAndFrame
         icon="imageJournalIcon"
-        center={{ x: 720, y: 472 }}
-        size={{ x: 100, y: -1 }}
-        hPadding={{ left: 0, right: 0 }}
-        vPadding={{ top: 0, bottom: 0 }}
-        offset={{ x: -5, y: 0 }}
+        center={journal.center}
+        size={journal.frameSize}
+        hPadding={journal.frameHPadding}
+        vPadding={journal.frameVPadding}
+        offset={journal.frameOffset}
         wireframe={active === "journal"}
         onClick={() => dispatch({ active: "journal" })}
       />
       <TextBox
-        headerCenter={{ x: 400, y: 420 }}
-        descCenter={{ x: 400, y: 420 }}
-        descWidth={456}
+        headerCenter={textbox.headerCenter}
+        descCenter={textbox.center}
+        descWidth={textbox.textWidth}
+        hPadding={textbox.frameHPadding}
+        vPadding={textbox.frameVPadding}
+        offset={textbox.frameOffset}
+        size={textbox.frameSize}
       />
     </div>
   );

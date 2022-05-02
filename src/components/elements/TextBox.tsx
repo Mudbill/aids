@@ -27,14 +27,14 @@ export default function TextBox(props: Props) {
 
   const framePos = {
     x:
-      (size.x === -1 ? descCenter.x - descWidth / 2 : size.x) +
+      (size.x === -1 ? headerCenter.x - descWidth / 2 : size.x) +
       offset.x -
       padding.left,
     y: (size.y === -1 ? 0 : 0) + headerCenter.y + offset.y - padding.top,
   };
 
   return (
-    <>
+    <div className="h-full">
       <Text
         x={descCenter.x - descWidth / 2}
         y={descCenter.y}
@@ -46,22 +46,22 @@ export default function TextBox(props: Props) {
         to turn it on.
       </Text>
       <Text
-        x={400 - headerCenter.x}
+        x={headerCenter.x}
         y={headerCenter.y}
-        width={800}
         fontSize={18}
         className="font-item-header text-center font-bold"
+        centered
       >
         Lantern (Off)
       </Text>
       <Frame
         x={framePos.x}
         y={framePos.y}
-        width={props.descWidth}
-        height={size.y === -1 ? 114 : size.y}
+        width={size.x === -1 ? props.descWidth : size.x}
+        height={size.y === -1 && size.x === -1 ? descWidth / 4 : size.y}
         onClick={() => dispatch({ active: "textbox" })}
         wireframe={active === "textbox"}
       />
-    </>
+    </div>
   );
 }
